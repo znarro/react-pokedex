@@ -1,11 +1,13 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
-import React from "react";
+import React, { useEffect } from "react";
 import * as Styled from "./StyledComponents";
 import SearchForm from "./SearchForm";
 
 const Pokedex = () => {
   const blueButtons = Array(10).fill(1);
+
+  useEffect(() => {});
 
   return (
     <main>
