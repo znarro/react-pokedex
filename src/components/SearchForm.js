@@ -7,7 +7,8 @@ const SearchForm = () => {
   const [query, setQuery] = useState("");
 
   const handleChange = (event) => {
-    setQuery(event.target.value);
+    const userInput = event.target.value;
+    setQuery(userInput.toLowerCase());
   };
 
   return (
