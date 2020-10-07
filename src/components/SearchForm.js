@@ -1,11 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
-import styled from "@emotion/styled";
 import React, { useState } from "react";
-
-const StyledForm = styled.form`
-  background-color: green;
-`;
+import { StyledInput } from "./StyledComponents";
 
 const SearchForm = () => {
   const [query, setQuery] = useState("");
@@ -15,11 +11,14 @@ const SearchForm = () => {
   };
 
   return (
-    <div>
-      <StyledForm>
-        <input type="text" onChange={handleChange} value={query} />
-      </StyledForm>
-    </div>
+    <form>
+      <StyledInput
+        type="text"
+        onChange={handleChange}
+        value={query}
+        placeholder="Enter pokémon name"
+      />
+    </form>
   );
 };
 
