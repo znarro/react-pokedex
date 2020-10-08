@@ -9,7 +9,7 @@ const SearchForm = ({ pokemon, onPokemonChange }) => {
   };
 
   return (
-    <form>
+    <form onSubmit={(e) => e.preventDefault()}>
       <StyledInput
         type="text"
         onChange={handleChange}
