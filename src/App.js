@@ -55,7 +55,7 @@ function App() {
       <Global
         styles={css`
           ${normalize};
-          @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Luckiest+Guy&display=swap");
+          @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Luckiest+Guy&family=Satisfy&display=swap");
           * {
             box-sizing: border-box;
           }

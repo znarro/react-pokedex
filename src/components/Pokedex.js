@@ -8,12 +8,26 @@ import axios from "axios";
 const Pokedex = () => {
   const [pokemon, setPokemon] = useState("");
   const [pokeData, setPokeData] = useState({});
+  const [isMobile, setIsMobile] = useState(false);
 
   const onPokemonChange = (newPokemon) => {
     setPokemon(newPokemon);
   };
 
+  const updateMedia = () => {
+    if (window.innerWidth < 768) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  };
+
   const blueButtons = Array(10).fill(1);
+
+  useEffect(() => {
+    window.addEventListener("resize", updateMedia);
+    return () => window.removeEventListener("resize", updateMedia);
+  }, [isMobile]);
 
   useEffect(() => {
     async function getPokemon() {
@@ -54,26 +68,49 @@ const Pokedex = () => {
             <Styled.Circle css={{ backgroundColor: "#03c803" }} />
           </div>
           <div className="lower" css={{ padding: "20px" }}>
-            <Styled.Screen>
-              <img
-                src={pokeData.sprites ? pokeData.sprites.front_default : ""}
-                alt={pokeData.name}
-                css={{ width: "100%" }}
-              />
-            </Styled.Screen>
-            <div
-              css={css`
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                padding: 20px;
-              `}
-            >
-              <Styled.GreenButton>
-                {pokeData.id ? `#${pokeData.id}` : ""}
-              </Styled.GreenButton>
-              <Styled.CrossButton />
-            </div>
+            {isMobile ? (
+              <div
+                css={{
+                  width: "300px",
+                  heigth: "300px",
+                  backgroundColor: "yellow",
+                  color: "black",
+                  padding: "20px",
+                  lineHeight: "2",
+                  fontFamily: "'Satisfy', cursive",
+                  fontSize: "1.5rem",
+                  transform: "rotate(-10deg)",
+                }}
+              >
+                <p>
+                  Open it on a wider screen, it's a Pokedex, not a cell phone!
+                </p>
+                <p css={{ textAlign: "right" }}>- Oak</p>
+              </div>
+            ) : (
+              <React.Fragment>
+                <Styled.Screen>
+                  <img
+                    src={pokeData.sprites ? pokeData.sprites.front_default : ""}
+                    alt={pokeData.name}
+                    css={{ width: "100%" }}
+                  />
+                </Styled.Screen>
+                <div
+                  css={css`
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    padding: 20px;
+                  `}
+                >
+                  <Styled.GreenButton>
+                    {pokeData.id ? `#${pokeData.id}` : ""}
+                  </Styled.GreenButton>
+                  <Styled.CrossButton />
+                </div>
+              </React.Fragment>
+            )}
           </div>
         </Styled.LeftSide>
         <Styled.RightSide
