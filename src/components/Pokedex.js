@@ -37,7 +37,14 @@ const Pokedex = () => {
               border-bottom: 2px solid black;
             `}
           >
-            <Styled.Circle big={true}>
+            <Styled.Circle
+              big={true}
+              css={css`
+                @media (max-width: 767px) {
+                  background-color: #9d9d9d;
+                }
+              `}
+            >
               <Styled.Circle
                 css={{ backgroundColor: "whitesmoke", border: "none" }}
               />
