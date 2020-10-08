@@ -4,7 +4,9 @@ import { StyledInput } from "./StyledComponents";
 
 const SearchForm = ({ pokemon, onPokemonChange }) => {
   const handleChange = (event) => {
-    const value = event.target.value;
+    let value = event.target.value;
+    value = value.replace(/\s/, "-").toLowerCase();
+    console.log(`InputValue: ${value}`);
     onPokemonChange(value.toLowerCase());
   };
 

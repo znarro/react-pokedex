@@ -81,9 +81,9 @@ const Pokedex = () => {
               <React.Fragment>
                 <Styled.DataField>
                   {pokeData.name
-                    ? `Name: ${
+                    ? `Name: ${(
                         pokeData.name[0].toUpperCase() + pokeData.name.slice(1)
-                      }`
+                      ).replace(/-/g, " ")}`
                     : ""}
                 </Styled.DataField>
                 <Styled.DataField>
