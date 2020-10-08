@@ -63,7 +63,17 @@ function App() {
           }
         `}
       />
-      <div className="App">
+      <div
+        className="App"
+        css={css`
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          min-height: 768px;
+          flex-direction: column;
+        `}
+      >
         <Header />
         <Pokedex />
         <Footer />
