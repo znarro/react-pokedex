@@ -21,6 +21,9 @@ const Header = () => (
         letter-spacing: 10px;
         margin: 30px 0;
         text-shadow: 5px 5px #3d7dca;
+        @media (max-width: 767px) {
+          font-size: 2.5rem;
+        }
       `}
     >
       React Pokedex

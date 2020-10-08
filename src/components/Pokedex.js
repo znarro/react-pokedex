@@ -69,7 +69,13 @@ const Pokedex = () => {
             </div>
           </div>
         </Styled.LeftSide>
-        <Styled.RightSide>
+        <Styled.RightSide
+          css={css`
+            @media (max-width: 767px) {
+              display: none;
+            }
+          `}
+        >
           <SearchForm pokemon={pokemon} onPokemonChange={onPokemonChange} />
           <div css={{ display: "flex", flexWrap: "wrap" }}>
             {blueButtons.map((button, index) => (
