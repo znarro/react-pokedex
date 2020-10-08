@@ -73,7 +73,7 @@ const Pokedex = () => {
                 css={{
                   width: "300px",
                   heigth: "300px",
-                  backgroundColor: "yellow",
+                  backgroundColor: "#fdfd22",
                   color: "black",
                   padding: "20px",
                   lineHeight: "2",
