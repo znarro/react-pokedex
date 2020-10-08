@@ -7,6 +7,8 @@ import axios from "axios";
 
 const Pokedex = () => {
   const [pokemon, setPokemon] = useState("");
+  const [pokeData, setPokeData] = useState({});
+  console.log(pokeData);
 
   const onPokemonChange = (newPokemon) => {
     setPokemon(newPokemon);
@@ -14,16 +16,15 @@ const Pokedex = () => {
 
   const blueButtons = Array(10).fill(1);
 
-  // useEffect(() => {
-  //   async function getPokemon() {
-  //     const pokeData = await axios.get(
-  //       `https://pokeapi.co/api/v2/pokemon/bulbasaur/`
-  //     );
-  //     console.log(pokeData);
-  //     // setPokemon(data.data.name);
-  //   }
-  //   getPokemon();
-  // });
+  useEffect(() => {
+    async function getPokemon() {
+      const URL = `https://pokeapi.co/api/v2/pokemon/`;
+      const response = await axios.get(`${URL}${pokemon}`);
+      // console.log(response.data);
+      setPokeData(response.data);
+    }
+    getPokemon();
+  }, [pokemon]);
 
   return (
     <main>
@@ -67,6 +68,10 @@ const Pokedex = () => {
             {blueButtons.map((button, index) => (
               <Styled.BlueButton key={index} />
             ))}
+          </div>
+          <div>
+            <p>Name: {pokeData.name}</p>
+            <p>Id: {pokeData.id}</p>
           </div>
         </Styled.RightSide>
       </Styled.Container>
