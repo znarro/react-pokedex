@@ -21,6 +21,9 @@ const Header = () => (
         letter-spacing: 10px;
         margin: 30px 0;
         text-shadow: 5px 5px #3d7dca;
+        /* @media (max-width: 767px) {
+          font-size: 2rem;
+        } */
       `}
     >
       React Pokedex
@@ -52,7 +55,7 @@ function App() {
       <Global
         styles={css`
           ${normalize};
-          @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Luckiest+Guy&display=swap");
+          @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Luckiest+Guy&family=Satisfy&display=swap");
           * {
             box-sizing: border-box;
           }
@@ -63,7 +66,21 @@ function App() {
           }
         `}
       />
-      <div className="App">
+      <div
+        className="App"
+        css={css`
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          min-height: 768px;
+          flex-direction: column;
+          margin-top: 10px;
+          @media (max-width: 767px) {
+            justify-content: flex-start;
+          }
+        `}
+      >
         <Header />
         <Pokedex />
         <Footer />
