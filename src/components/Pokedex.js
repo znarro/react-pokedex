@@ -1,25 +1,29 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import * as Styled from "./StyledComponents";
 import SearchForm from "./SearchForm";
 import axios from "axios";
 
 const Pokedex = () => {
-  // const [pokemon, setPokemon] = useState(0);
+  const [pokemon, setPokemon] = useState("");
+
+  const onPokemonChange = (newPokemon) => {
+    setPokemon(newPokemon);
+  };
 
   const blueButtons = Array(10).fill(1);
 
-  useEffect(() => {
-    async function getPokemon() {
-      const pokeData = await axios.get(
-        `https://pokeapi.co/api/v2/pokemon/bulbasaur/`
-      );
-      console.log(pokeData);
-      // setPokemon(data.data.name);
-    }
-    getPokemon();
-  });
+  // useEffect(() => {
+  //   async function getPokemon() {
+  //     const pokeData = await axios.get(
+  //       `https://pokeapi.co/api/v2/pokemon/bulbasaur/`
+  //     );
+  //     console.log(pokeData);
+  //     // setPokemon(data.data.name);
+  //   }
+  //   getPokemon();
+  // });
 
   return (
     <main>
@@ -58,7 +62,7 @@ const Pokedex = () => {
           </div>
         </Styled.LeftSide>
         <Styled.RightSide>
-          <SearchForm />
+          <SearchForm pokemon={pokemon} onPokemonChange={onPokemonChange} />
           <div css={{ display: "flex", flexWrap: "wrap" }}>
             {blueButtons.map((button, index) => (
               <Styled.BlueButton key={index} />

@@ -3,12 +3,9 @@ import { jsx, css } from "@emotion/core";
 import React, { useState } from "react";
 import { StyledInput } from "./StyledComponents";
 
-const SearchForm = () => {
-  const [query, setQuery] = useState("");
-
+const SearchForm = ({ pokemon, onPokemonChange }) => {
   const handleChange = (event) => {
-    const userInput = event.target.value;
-    setQuery(userInput.toLowerCase());
+    onPokemonChange(event.target.value);
   };
 
   return (
@@ -16,7 +13,7 @@ const SearchForm = () => {
       <StyledInput
         type="text"
         onChange={handleChange}
-        value={query}
+        value={pokemon}
         placeholder="Enter pokémon name"
       />
     </form>
