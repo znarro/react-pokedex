@@ -81,6 +81,8 @@ const Pokedex = () => {
             <p>
               {pokeData.types ? `Type: ${pokeData.types[0].type.name}` : ""}
             </p>
+            <p>{pokeData.height ? `Height: ${pokeData.height / 10} m` : ""}</p>
+            <p>{pokeData.weight ? `Weight: ${pokeData.weight / 10} kg` : ""}</p>
           </div>
         </Styled.RightSide>
       </Styled.Container>
