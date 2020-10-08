@@ -10,13 +10,13 @@ const Container = styled.div`
 const LeftSide = styled.div`
   border: 2px solid black;
   border-radius: 10px;
-  width: 400px;
+  width: 360px;
   height: 600px;
   background-color: #ff0000;
 `;
 
 const RightSide = styled.div`
-  width: 400px;
+  width: 360px;
   height: 500px;
   background-color: #c42c2c;
   border: 2px solid black;
