@@ -8,7 +8,6 @@ import axios from "axios";
 const Pokedex = () => {
   const [pokemon, setPokemon] = useState("");
   const [pokeData, setPokeData] = useState({});
-  console.log(pokeData);
 
   const onPokemonChange = (newPokemon) => {
     setPokemon(newPokemon);
@@ -20,7 +19,7 @@ const Pokedex = () => {
     async function getPokemon() {
       const URL = `https://pokeapi.co/api/v2/pokemon/`;
       const response = await axios.get(`${URL}${pokemon}`);
-      // console.log(response.data);
+      console.log(response.data);
       setPokeData(response.data);
     }
     getPokemon();
@@ -48,7 +47,13 @@ const Pokedex = () => {
             <Styled.Circle css={{ backgroundColor: "#03c803" }} />
           </div>
           <div className="lower" css={{ padding: "20px" }}>
-            <Styled.Screen />
+            <Styled.Screen>
+              <img
+                src={pokeData.sprites ? pokeData.sprites.front_default : ""}
+                alt={pokeData.name}
+                css={{ width: "100%" }}
+              />
+            </Styled.Screen>
             <div
               css={css`
                 display: flex;
@@ -57,7 +62,9 @@ const Pokedex = () => {
                 padding: 20px;
               `}
             >
-              <Styled.GreenButton />
+              <Styled.GreenButton>
+                {pokeData.id ? `#${pokeData.id}` : ""}
+              </Styled.GreenButton>
               <Styled.CrossButton />
             </div>
           </div>
@@ -70,8 +77,10 @@ const Pokedex = () => {
             ))}
           </div>
           <div>
-            <p>Name: {pokeData.name}</p>
-            <p>Id: {pokeData.id}</p>
+            <p>{pokeData.name ? `Name: ${pokeData.name}` : ""}</p>
+            <p>
+              {pokeData.types ? `Type: ${pokeData.types[0].type.name}` : ""}
+            </p>
           </div>
         </Styled.RightSide>
       </Styled.Container>

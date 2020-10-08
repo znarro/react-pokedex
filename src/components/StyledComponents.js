@@ -41,6 +41,9 @@ const Screen = styled.div`
   border: 20px solid whitesmoke;
   border-radius: 10px;
   margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const CrossButton = styled.div`
@@ -69,6 +72,9 @@ const GreenButton = styled.div`
   background-color: #11c011;
   border: 2px solid black;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const BlueButton = styled.div`
