@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
-import React, { useState } from "react";
+import React from "react";
 import { StyledInput } from "./StyledComponents";
 
 const SearchForm = ({ pokemon, onPokemonChange }) => {

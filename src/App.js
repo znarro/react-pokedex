@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { Global, jsx, css } from "@emotion/core";
 import normalize from "normalize.css";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Pokedex from "./components/Pokedex";
 
 const Header = () => (
