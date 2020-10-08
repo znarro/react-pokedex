@@ -76,14 +76,30 @@ const Pokedex = () => {
               <Styled.BlueButton key={index} />
             ))}
           </div>
-          <div>
-            <p>{pokeData.name ? `Name: ${pokeData.name}` : ""}</p>
-            <p>
-              {pokeData.types ? `Type: ${pokeData.types[0].type.name}` : ""}
-            </p>
-            <p>{pokeData.height ? `Height: ${pokeData.height / 10} m` : ""}</p>
-            <p>{pokeData.weight ? `Weight: ${pokeData.weight / 10} kg` : ""}</p>
-          </div>
+          <Styled.DataContainer>
+            {pokeData.id ? (
+              <React.Fragment>
+                <Styled.DataField>
+                  {pokeData.name
+                    ? `Name: ${
+                        pokeData.name[0].toUpperCase() + pokeData.name.slice(1)
+                      }`
+                    : ""}
+                </Styled.DataField>
+                <Styled.DataField>
+                  {pokeData.types ? `Type: ${pokeData.types[0].type.name}` : ""}
+                </Styled.DataField>
+                <Styled.DataField>
+                  {pokeData.height ? `Height: ${pokeData.height / 10} m` : ""}
+                </Styled.DataField>
+                <Styled.DataField>
+                  {pokeData.weight ? `Weight: ${pokeData.weight / 10} kg` : ""}
+                </Styled.DataField>
+              </React.Fragment>
+            ) : (
+              ""
+            )}
+          </Styled.DataContainer>
         </Styled.RightSide>
       </Styled.Container>
     </main>

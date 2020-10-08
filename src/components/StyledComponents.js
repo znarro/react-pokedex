@@ -98,6 +98,16 @@ const StyledInput = styled.input`
   }
 `;
 
+const DataField = styled.p`
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #33b433;
+  padding: 10px;
+`;
+
+const DataContainer = styled.div`
+  margin-top: 50px;
+`;
+
 export {
   Container,
   LeftSide,
@@ -108,4 +118,6 @@ export {
   GreenButton,
   BlueButton,
   StyledInput,
+  DataField,
+  DataContainer,
 };
