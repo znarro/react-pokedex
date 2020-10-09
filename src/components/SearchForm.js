@@ -16,7 +16,7 @@ const SearchForm = ({ pokemon, onPokemonChange }) => {
         type="text"
         onChange={handleChange}
         value={pokemon}
-        placeholder="Enter name"
+        placeholder="Enter pokemon's name"
         spellcheck="false"
       />
     </form>

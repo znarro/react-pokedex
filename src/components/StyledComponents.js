@@ -21,7 +21,7 @@ const RightSide = styled.div`
   background-color: #c42c2c;
   border: 2px solid black;
   border-radius: 10px;
-  padding: 30px 40px;
+  padding: 30px 30px;
 `;
 
 const Circle = styled.div`
@@ -89,6 +89,7 @@ const StyledInput = styled.input`
   background-color: #33b433;
   color: black;
   padding: 30px 10px;
+  font-size: 0.85rem;
   outline: none;
   height: 50px;
   width: 100%;
