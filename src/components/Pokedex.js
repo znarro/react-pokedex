@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+
 import * as Styled from "./StyledComponents";
 import SearchForm from "./SearchForm";
-import axios from "axios";
 
 const Pokedex = () => {
   const [pokemon, setPokemon] = useState("");
@@ -21,24 +22,28 @@ const Pokedex = () => {
       setIsMobile(false);
     }
   };
-
-  const blueButtons = Array(10).fill(1);
-
+  
   useEffect(() => {
     window.addEventListener("resize", updateMedia);
     return () => window.removeEventListener("resize", updateMedia);
-  }, [isMobile]);
-
+  }, []);
+  
   useEffect(() => {
-    async function getPokemon() {
-      const URL = `https://pokeapi.co/api/v2/pokemon/`;
-      const response = await axios.get(`${URL}${pokemon}`);
-      console.log(response.data);
-      setPokeData(response.data);
+    try {
+      const getPokemon = async () => {
+        const URL = `https://pokeapi.co/api/v2/pokemon/`;
+        const response = await axios.get(`${URL}${pokemon}`);
+        console.log(response.data);
+        setPokeData(response.data);
+      }
+      getPokemon();
+    } catch (err) {
+      console.error(err);
     }
-    getPokemon();
   }, [pokemon]);
 
+  const blueButtons = Array(10).fill(1);
+  
   return (
     <main>
       <Styled.Container>
@@ -52,7 +57,7 @@ const Pokedex = () => {
             `}
           >
             <Styled.Circle
-              big={true}
+              big
               css={css`
                 @media (max-width: 767px) {
                   background-color: #9d9d9d;
