@@ -5,42 +5,57 @@ import axios from "axios";
 
 import * as Styled from "./StyledComponents";
 import SearchForm from "./SearchForm";
+import useDebounce from "../hooks/useDebounce"
 
 const Pokedex = () => {
   const [pokemon, setPokemon] = useState("");
   const [pokeData, setPokeData] = useState({});
   const [isMobile, setIsMobile] = useState(false);
 
+  const debouncedSearchTerm = useDebounce(pokemon, 1000);
+
   const onPokemonChange = (newPokemon) => {
     setPokemon(newPokemon);
   };
 
-  const updateMedia = () => {
-    if (window.innerWidth < 768) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
-  };
   
   useEffect(() => {
     window.addEventListener("resize", updateMedia);
     return () => window.removeEventListener("resize", updateMedia);
   }, []);
   
-  useEffect(() => {
-    try {
-      const getPokemon = async () => {
-        const URL = `https://pokeapi.co/api/v2/pokemon/`;
-        const response = await axios.get(`${URL}${pokemon}`);
-        console.log(response.data);
-        setPokeData(response.data);
+  useEffect(
+    () => {
+      if (debouncedSearchTerm) {
+        getPokemon(debouncedSearchTerm).then(results => {
+          setPokeData(results);
+        });
+      } else {
+        setPokeData({});
       }
-      getPokemon();
+    },
+    [debouncedSearchTerm]
+  );
+    
+  function updateMedia() {
+    if (window.innerWidth < 768) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  };
+
+  async function getPokemon(pokemon) {
+    const URL = `https://pokeapi.co/api/v2/pokemon/`;
+    try {
+      const response = await axios.get(`${URL}${pokemon}`);
+      console.log(response.data);
+      return response.data;
     } catch (err) {
       console.error(err);
+      return {}
     }
-  }, [pokemon]);
+  }
 
   const blueButtons = Array(10).fill(1);
   
